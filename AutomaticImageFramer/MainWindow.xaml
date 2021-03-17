@@ -1,0 +1,43 @@
+﻿<Window x:Class="AutomaticImageFramer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AutomaticImageFramer"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Image Framer" Height="150" Width="400">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Label Content="Border width:" Target="{Binding ElementName=BorderWidth_textBox}"/>
+                <TextBox VerticalContentAlignment="Center" 
+                         HorizontalAlignment="Stretch" 
+                         Text="5" 
+                         MinWidth="50" x:Name="BorderWidth_textBox"></TextBox>
+                <Label Content="Color:" Target="{Binding ElementName=BorderWidth_textBox}"/>
+                <xctk:ColorPicker Name="ColorPicker"
+                                  SelectedColor="Black"
+                                  SelectedColorChanged="ColorPicker_SelectedColorChanged"
+                                  MinWidth="75"></xctk:ColorPicker>
+            </StackPanel>
+            <TextBlock Name="PasteTarget" 
+                       TextAlignment="Center" 
+                       Focusable="True" 
+                       Text="Paste image here" 
+                       Background="Gray" 
+                       Height="55">
+                <TextBlock.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Click="MenuItem_Click" Header="Paste image">
+                        </MenuItem>
+                    </ContextMenu>
+                </TextBlock.ContextMenu>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <Label Content="Status:" Target="{Binding ElementName=LogOutput}"/>
+                <TextBlock Name="LogOutput" VerticalAlignment="Center" Text="{Binding WaitingMessageBindingProperty}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
